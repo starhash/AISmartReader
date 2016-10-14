@@ -1,0 +1,9 @@
+[('Flux', 'NNP'), ('is', 'VBZ'), ('the', 'DT'), ('presence', 'NN'), ('of', 'IN'), ('a', 'DT'), ('force', 'NN'), ('field', 'NN'), ('in', 'IN'), ('a', 'DT'), ('specified', 'JJ'), ('physical', 'JJ'), ('medium', 'NN'), (',', ','), ('or', 'CC'),
+ ('the', 'DT'), ('flow', 'NN'), ('of', 'IN'), ('energy', 'NN'), ('through', 'IN'), ('a', 'DT'), ('surface', 'NN'), ('.', '.')]
+
+[('Efficiency', 'NN'), ('is', 'VBZ'), ('the', 'DT'), ('ability', 'NN'), ('to', 'TO'), ('avoid', 'VB'), ('wasting', 'NN'), ('materials', 'NNS'), (',', ','), ('energy', 'NN'), (',', ','), ('efforts', 'NNS'), (',', ','), ('money', 'NN'), (',',
+ ','), ('and', 'CC'), ('time', 'NN'), ('in', 'IN'), ('doing', 'VBG'), ('something', 'NN'), ('or', 'CC'), ('in', 'IN'), ('producing', 'VBG'), ('a', 'DT'), ('desired', 'JJ'), ('result', 'NN'), ('.', '.')]
+
+
+[('Distributed', 'VBN'), ('computing', 'NN'), ('is', 'VBZ'), ('a', 'DT'), ('computing', 'VBG'), ('concept', 'NN'), ('that', 'IN'), (',', ','), ('in', 'IN'), ('its', 'PRP$'), ('most', 'JJS'), ('general', 'JJ'), ('sense', 'NN'), (',', ','), (
+'refers', 'NNS'), ('to', 'TO'), ('multiple', 'VB'), ('computer', 'NN'), ('systems', 'NNS'), ('working', 'VBG'), ('on', 'IN'), ('a', 'DT'), ('single', 'JJ'), ('problem', 'NN'), ('.', '.')]
