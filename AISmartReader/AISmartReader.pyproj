@@ -29,47 +29,22 @@
     <Compile Include="Harsh\AISmartReader2016-09-26.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Pramodith\randomize.py" />
     <Compile Include="Pramodith\words_cluster.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Harsh\%28exclude- NN,minor%29-cascade.csv" />
-    <Content Include="Harsh\%28exclude- NN,minor%29-output.csv" />
-    <Content Include="Harsh\%28exclude- NN,minor%29-output.xlsx" />
-    <Content Include="Harsh\%28exclude- NN,minor%29.csv" />
-    <Content Include="Harsh\%28exclude- NN,minor%29_output.csv" />
-    <Content Include="Harsh\%28exclude- NN,minor%29_output_cluster=3.xlsx" />
-    <Content Include="Harsh\%28exclude- NN,minor%29_output_label=0.csv" />
-    <Content Include="Harsh\%28exclude- NN,minor%29_output_label=0.csv_labels.csv" />
-    <Content Include="Harsh\%28exclude- NN,minor%29_output_label=1.csv" />
-    <Content Include="Harsh\%28exclude- NN,minor%29_output_label=1.csv_labels.csv" />
-    <Content Include="Harsh\%28exclude- NN,minor%29_output_label=2.csv" />
-    <Content Include="Harsh\%28exclude- NN,minor%29_output_label=2.csv_labels.csv" />
     <Content Include="Harsh\Cluster 2.csv" />
     <Content Include="Harsh\Cluster 3.csv" />
     <Content Include="Harsh\Cluster 1.csv" />
     <Content Include="Harsh\Cluster 4.csv" />
     <Content Include="Harsh\Cluster 5.csv" />
     <Content Include="Harsh\final.csv" />
-    <Content Include="Pramodith\a.html" />
     <Content Include="Pramodith\definitions.txt" />
     <Content Include="Pramodith\def_pos.txt" />
-    <Content Include="Pramodith\Input.csv" />
-    <Content Include="Pramodith\Input1.csv" />
-    <Content Include="Pramodith\Input1.csv.xlsx" />
-    <Content Include="Pramodith\Input2.xlsx" />
-    <Content Include="Pramodith\Input2.xlxs.xlsx" />
     <Content Include="Pramodith\Input3.csv" />
     <Content Include="Pramodith\Normalized.csv" />
     <Content Include="Pramodith\Normalozed.xlsx" />
     <Content Include="Pramodith\POS.txt" />
-    <Content Include="Pramodith\Randomize2.csv" />
-    <Content Include="Pramodith\Randomized.csv" />
-    <Content Include="Pramodith\words-lim-len4.csv" />
     <Content Include="Pramodith\words-lim-len4_output.csv" />
-    <Content Include="Pramodith\words-lim-len4_output.csv.xlsx" />
-    <Content Include="Pramodith\words_cluster" />
-    <Content Include="Pramodith\~%24words-lim-len4_output.csv.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{ce7d0420-2016-4e97-b8b1-c351009dc646}\2.7" />
