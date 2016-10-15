@@ -7,6 +7,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AISmartReader", "AISmartRea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordNetPlugin", "WordNetPlugin\WordNetPlugin.csproj", "{D65CE07F-45EE-4C52-94EF-8FB44DF4AEAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserTest", "UserTest\UserTest.csproj", "{8FAAA8D6-E48A-4A48-BB7C-E044B9C18A3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{D65CE07F-45EE-4C52-94EF-8FB44DF4AEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D65CE07F-45EE-4C52-94EF-8FB44DF4AEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D65CE07F-45EE-4C52-94EF-8FB44DF4AEAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FAAA8D6-E48A-4A48-BB7C-E044B9C18A3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FAAA8D6-E48A-4A48-BB7C-E044B9C18A3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FAAA8D6-E48A-4A48-BB7C-E044B9C18A3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FAAA8D6-E48A-4A48-BB7C-E044B9C18A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

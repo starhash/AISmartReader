@@ -45,6 +45,12 @@
     <Content Include="Harsh\%28exclude- NN,minor%29_output_label=1.csv_labels.csv" />
     <Content Include="Harsh\%28exclude- NN,minor%29_output_label=2.csv" />
     <Content Include="Harsh\%28exclude- NN,minor%29_output_label=2.csv_labels.csv" />
+    <Content Include="Harsh\Cluster 2.csv" />
+    <Content Include="Harsh\Cluster 3.csv" />
+    <Content Include="Harsh\Cluster 1.csv" />
+    <Content Include="Harsh\Cluster 4.csv" />
+    <Content Include="Harsh\Cluster 5.csv" />
+    <Content Include="Harsh\final.csv" />
     <Content Include="Pramodith\a.html" />
     <Content Include="Pramodith\definitions.txt" />
     <Content Include="Pramodith\def_pos.txt" />
