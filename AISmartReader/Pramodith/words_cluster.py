@@ -20,12 +20,13 @@ from random import randint
 
 
 def nsyl(word):
-	d=cmudict.dict()
-  	#lowercase = word.lowercase()
-  	if word not in d:
-  		return -1
-  	else:
-  		print max([len([y for y in x if y[-1].isdigit()]) for x in d[word]])
+    d=cmudict.dict()
+    #lowercase = word.lowercase()
+    if word not in d:
+        return -1
+    else:
+        print max([len([y for y in x if y[-1].isdigit()]) for x in d[word]])
+
 nsyl("ambidextrous")
 
 def convert(fname, pages=None):
@@ -197,4 +198,5 @@ fw.close()
 #y=-3.246/10x1 -3.617/10^15x2 + 6.59/10x3+-5.699/10x4 + -2.901/1000x5
 '''
 
-'''
+'''	
+			

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8FAAA8D6-E48A-4A48-BB7C-E044B9C18A3D}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UserTest</RootNamespace>
     <AssemblyName>UserTest</AssemblyName>
@@ -32,7 +32,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="InfinityX.Grammar">
+      <HintPath>..\..\Infinity\InfinityX.Grammar\bin\Debug\InfinityX.Grammar.dll</HintPath>
+    </Reference>
     <Reference Include="LAIR.Collections">
       <HintPath>..\..\..\..\..\Downloads\ptl.sys.virginia.edu\msg8u\NLP\Source\ResourceAPIs\WordNet\WordNet\LAIR.Collections.dll</HintPath>
     </Reference>
@@ -50,6 +56,9 @@
     </Reference>
     <Reference Include="Lzma#">
       <HintPath>..\Lzma#.dll</HintPath>
+    </Reference>
+    <Reference Include="Neuroph">
+      <HintPath>..\..\Neuroph-2.92\Neuroph\bin\Debug\Neuroph.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -98,6 +107,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AISmartReaderLibrary\AISmartReaderLibrary.csproj">
+      <Project>{4b7265d9-924d-4268-b4b6-694f7814b01d}</Project>
+      <Name>AISmartReaderLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WordNetPlugin\WordNetPlugin.csproj">
       <Project>{d65ce07f-45ee-4c52-94ef-8fb44df4aeaa}</Project>
       <Name>WordNetPlugin</Name>
