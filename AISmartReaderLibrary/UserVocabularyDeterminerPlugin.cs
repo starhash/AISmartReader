@@ -106,6 +106,10 @@ namespace AISmartReaderLibrary {
             Dictionary<string, bool> filter = questions.Where((x) => x.Value == false).ToDictionary((x) => x.Key, (y) => y.Value, questions.Comparer);
             List<int> labels = filter.Keys.Select((x) => _words[x]).ToList();
             int mode = labels.GroupBy(v => v).OrderByDescending(g => g.Count()).First().Key;
+            /*
+            make the formula something like this to get the level of the user:
+               sigma((level of question)*(number of questions right from that level))*(max_level/all questions write  case)
+            */
             return mode;
         }
     }
