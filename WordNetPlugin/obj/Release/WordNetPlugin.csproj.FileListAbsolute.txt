@@ -1,0 +1,7 @@
+C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\WordNetPlugin\bin\Release\WordNetPlugin.dll
+C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\WordNetPlugin\bin\Release\WordNetPlugin.pdb
+C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\WordNetPlugin\bin\Release\LAIR.Collections.dll
+C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\WordNetPlugin\bin\Release\LAIR.Extensions.dll
+C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\WordNetPlugin\bin\Release\LAIR.IO.dll
+C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\WordNetPlugin\obj\Release\WordNetPlugin.dll
+C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\WordNetPlugin\obj\Release\WordNetPlugin.pdb

@@ -7,6 +7,7 @@ using System.IO;
 using LAIR.Extensions;
 using LAIR.Collections.Generic;
 using LAIR.IO;
+using LAIR.ResourceAPIs.WordNet;
 
 namespace LAIR.ResourceAPIs.WordNet
 {

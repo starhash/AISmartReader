@@ -36,6 +36,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\inetpub\wwwroot\Readefine\Bin\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
     <Reference Include="InfinityX.Grammar">
       <HintPath>..\..\Infinity\InfinityX.Grammar\bin\Debug\InfinityX.Grammar.dll</HintPath>
     </Reference>

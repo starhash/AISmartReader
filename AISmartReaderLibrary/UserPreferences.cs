@@ -13,16 +13,19 @@ namespace AISmartReaderLibrary {
     public class UserPreferences {
         public int Level { get; set; }
         static string _base = Directory.GetCurrentDirectory();
-        public static string Base { get { return _base; } }
+        public static string Base { get { return _base; } set { _base = value; } }
         MultiLayerPerceptron predictionNN;
 
-        public bool LoadUserPreference(int level) {
-
-            bool b;
+        public bool LoadUserPreference(int level = -1) {
+            LemmaSharp.LemmatizerPrebuiltCompact l = new LemmaSharp.LemmatizerPrebuiltCompact(LemmaSharp.LanguagePrebuilt.English);
+            bool b = false;
             if (b = (predictionNN = LoadNeuralPref()) == null) {
-                UserVocabularyDeterminerPlugin test = new UserVocabularyDeterminerPlugin();
+                if (level < 0) return false;
                 DataSet ds = new DataSet(4, 1);
-                foreach (string word in WordHighlighter.Words.Keys) {
+                foreach (string w in WordHighlighter.Words.Keys) {
+                    string word = w;
+                    string lemma = l.Lemmatize(word);
+                    if (WordHighlighter.Words.ContainsKey(lemma)) word = lemma;
                     ds.addRow(new DataSetRow(WordHighlighter.Words[word].Data, new double[] { (UserVocabularyDeterminerPlugin.Words[word] <= level) ? 1 : 0 }));
                 }
                 ds.shuffle();
@@ -34,14 +37,10 @@ namespace AISmartReaderLibrary {
                 predictionNN.LearningRule = mombp;
                 predictionNN.learn(ds);
                 predictionNN.pauseLearning();
-
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Saving neural network:");
+                
                 FlushToDisk();
             }
-            predictionNN.pauseLearning();
-            return true;
+            return !b;
         }
         
         private MultiLayerPerceptron LoadNeuralPref() {
@@ -68,6 +67,7 @@ namespace AISmartReaderLibrary {
             ds.addRow(new DataSetRow(WordHighlighter.Words[word].Data, new double[] { (knownStatus) ? 1 : 0 }));
             predictionNN.learn(ds);
             predictionNN.pauseLearning();
+            FlushToDisk();
         }
 
         public void FlushToDisk() {

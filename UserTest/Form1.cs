@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WordNetPlugin;
+using LAIR.ResourceAPIs.WordNet;
 
 namespace UserTest {
     public partial class Form1 : Form {

@@ -25,6 +25,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Anmol\test.py" />
     <Compile Include="Harsh\AISmartReader.py" />
     <Compile Include="Harsh\AISmartReader2016-09-26.py">
       <SubType>Code</SubType>
@@ -71,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Harsh\" />
+    <Folder Include="Anmol\" />
     <Folder Include="Pramodith\" />
   </ItemGroup>
   <PropertyGroup>

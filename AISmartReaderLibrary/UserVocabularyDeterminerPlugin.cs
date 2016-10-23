@@ -34,10 +34,11 @@ namespace AISmartReaderLibrary {
             }
         }
 
-        public UserVocabularyDeterminerPlugin() {
+        public UserVocabularyDeterminerPlugin(int testCount = 20) {
             r = new Random();
             questions = new Dictionary<string, bool>();
             answers = new List<string>();
+            this.testCount = testCount;
         }
 
         public Tuple<string, Set<SynSet>> GetNonEmpty() {
@@ -75,6 +76,34 @@ namespace AISmartReaderLibrary {
             }
         }
 
+        public Question GetQuestion() {
+            if (testIndex < testCount) {
+                Question question = new Question();
+                List<Tuple<string, Set<SynSet>>> four = new List<Tuple<string, Set<SynSet>>>();
+                for (int i = 0; i < 4; i++) {
+                    four.Add(GetNonEmpty());
+                }
+                for (int i = 0; i < 4; i++) {
+                    string gloss = four[i].Item2.ElementAt(0).Gloss;
+                    if (gloss.IndexOf("; \"") != -1)
+                        gloss = gloss.Substring(0, gloss.IndexOf("; \""));
+                    question.Options.Add(gloss);
+                }
+                answer = r.Next(4);
+                question.Answer = answer;
+                curr = four[answer].Item1;
+                question.Word = curr;
+                return question;
+            }
+            return null;
+        }
+
+        public void PutResult(string word, int option) {
+            bool res = option == answer;
+            questions.Add(word, res);
+            testIndex++;
+        }
+
         private void Next() {
             if (testIndex < testCount) {
                 LoadQuestion();
@@ -103,10 +132,30 @@ namespace AISmartReaderLibrary {
         }
 
         public int Calculate() {
+            int[] count = new int[5];
+            questions.Keys.ToList().ForEach(x => {
+                count[Words[x]]++;
+            });
             Dictionary<string, bool> filter = questions.Where((x) => x.Value == false).ToDictionary((x) => x.Key, (y) => y.Value, questions.Comparer);
             List<int> labels = filter.Keys.Select((x) => _words[x]).ToList();
-            int mode = labels.GroupBy(v => v).OrderByDescending(g => g.Count()).First().Key;
+            int[] mcount = new int[5];
+            for(int i = 0; i < 5; i++) {
+                mcount[i] = labels.Where(x => x == i).Count();
+            }
+            int mode = mcount.Max();
+            //int mode = labels.GroupBy(v => v).OrderByDescending(g => g.Count()).First().Key;
             return mode;
         }
+    }
+
+    public class Question {
+        public string Word { get; set; }
+        public List<string> Options { get; set; }
+        public int Answer { get; set; }
+
+        public Question() {
+            Options = new List<string>();
+        }
+
     }
 }
