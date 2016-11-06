@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Smart Reader : The aim of this project is to build a ‘Smart Reader’ which helps the user understand and comprehend the texts while reading. ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Smart Reader</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/starhash/AISmartReader">View on GitHub</a>
+
+          <h1 id="project_title">Smart Reader</h1>
+          <h2 id="project_tagline">The aim of this project is to build a ‘Smart Reader’ which helps the user understand and comprehend the texts while reading. </h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/starhash/AISmartReader/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/starhash/AISmartReader/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+		  <h3 id="analyzeuservocabularyandsuggestwordsthatmaybeunknown">Analyze User Vocabulary and Suggest Words that may be "Unknown"
+		  </h3>
+		  <p>This module depends on a 
+			<strong>
+			  <em>Multi Layer Perceptron
+			  </em>
+			</strong> (a type of neural network [
+			<a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">wiki
+			</a>]).
+		  </p>
+		  <p>The perceptron we have used is a fairly simple one, but its responses are very positive.
+		  </p>
+		  <p>
+			<img src="https://raw.githubusercontent.com/starhash/AISmartReader/master/Resources/NN.png" alt="In:2, Hidden:{3}, Out:1">
+		  </p>
+		  <p>Here is a brief description of the inputs and outputs-
+		  </p>
+		  <p>
+			<strong>In:1
+			</strong> (Word usage Frequency) - Denotes the frequency of the usage of a particular word as submitted to the 
+			<em>
+			  <a href="http://elexicon.wustl.edu/default.asp">English Lexicon Project
+			  </a>
+			</em>. More frequent words tend to be known by more people.
+		  </p>
+		  <p>
+			<strong>In:2
+			</strong> (Syllables in a word) - The more 
+			<a href="https://en.wikipedia.org/wiki/Syllable">syllables
+			</a> a word has, the more chances it has to be forgotten, hence increasing its difficulty.
+		  </p>
+		  <p>Based on these two inputs for each word as obtained from the English Lexicon Project's lexical characteristic data set generator, clustering operation has been performed and the words 37,000~ in total have been classified into eight different classes. These classes signify the difficulty of each word. A manual effort went in arranging the clusters, since there is no automated way of identifying which cluster is the hardest, although further research can be done in this area.
+		  </p>
+		  <p>Find the data set here 
+			<a href="https://github.com/starhash/AISmartReader/blob/master/Readifine/bin/Debug/data/clustered.prop">clustered.prop
+			</a> (format: 
+			<em>CSV
+			</em>, columns: { "word", "frequency", "syllables", "cluster" }. 
+			<em>All numerical values have been normalized by the minmax rule
+			</em>. Note: 
+			<strong>This data set is referred to as the principal data set.
+			</strong>)
+		  </p>
+		  <p>Here is how the clustering looks like-
+			//Insert image here
+		  </p>
+		  <p>Next to collecting and classifying the data, what is needed is to identify the user's vocabulary level. A small test comprised of twenty to thirty questions are pulled of from the database. (The database uses 
+			<strong>Princeton University's
+			</strong> 
+			<em>
+			  <a href="https://wordnet.princeton.edu/wordnet">WordNet
+			  </a> database
+			</em>. The .NET API used can be found 
+			<a href="https://github.com/jdehlin/WordNetSharp">here
+			</a>.
+		  </p>
+		  <p>The words from the principal data set are mapped to entries in the WordNet database.) The test shows the gloss for a word picked at random from a particular cluster along with three more, while the actual word is shown as the question. The user is then asked to pick the meaning of the word from the displayed gloss entries. Responses are recorded along with the cluster index for the word being asked. The weighted mean for correct answers is calculated for each cluster based on the formula 
+			<code>M(k) = C(k) / (C(k) + W(k))
+			</code> where 'C(k)' is the number of correct responses for words asked from the cluster 'k' and 
+			<code>W(k)
+			</code> for the wrong ones. From these 
+			<code>k
+			</code> means the cluster index corresponding to the modal value of the calculated mean values is selected.
+		  </p>
+		  <p>This value acts as the threshold of the user's vocabulary, 
+			<code>T(v)
+			</code>.
+		  </p>
+		  <p>Once 
+			<code>T(v)
+			</code> is known a new data set is generated in the memory. If principal data set is denoted by 
+			<code>P(w,f,s,c)
+			</code>, the new data set 
+			<code>C(f,s,known)
+			</code> is generated by the following expression-
+		  </p>
+		  <p>
+			<code>P(w,f,s,c) =&gt; C(f,s,known)
+			  where known = { 0: c &gt; T(v); 1: otherwise }
+			</code>
+		  </p>
+		  <p>This mapping results in a new data set which is used to train the neural network. Each neural network will adapt differently for every user since every user will have a different vocabulary, but the variations are only limited to basic thresholding within the range 
+			<code>[0, 7]
+			</code>. The trained network can be made more precise by introducing more levels in the clustering phase done earlier.
+		  </p>
+		  <p>Once the neural network is trained, properties of a particular word can be sent to the neural network. As the diagram suggests, the output is 
+			<strong>Out:1
+			</strong>. This output denotes a binary value; if the value is 
+			<code>1
+			</code> it denotes that the word is known, otherwise it is unknown by the current user.
+		  </p>
+		  <p>A feedback mechanism exists where the user can send feedback regarding a wrong word being classifed as unknown, even though the user knows it. The neural network is retrained with one or more feedbacks accumulated accross a period of time to reflect prominent changes.
+		  </p>
+		  <p>This filtering can be used to filter out words from text books or novels to provide artificially facilitated assistance while reading.
+		  </p>
+		  <p>An application named 
+			<a href="https://github.com/starhash/AISmartReader/tree/master/Readifine">Readifined
+			</a> is built to serve the same purpose. Offers testing the user, recording his vocabulary and filtering words from text files. The application also shows a popup indicating a list of related phrases/gloss terms from the WordNet database.
+		  </p>
+		  <h4 id="scope">Scope
+		  </h4>
+		  <ol>
+			<li>Digital book readers can implement this mechanism to assist users in learning.
+			</li>
+			<li>Web browsers can perform analysis and simplify web pages for the users based on their scores.
+			</li>
+			<li>Talk back features can also implement this functionality to make the machine generated speech easier to understand.
+			</li>
+		  </ol>
+		  <h4 id="referencesofapisanddatasetsused">References of APIs and Datasets used
+		  </h4>
+		  <ol>
+			<li>
+			  <strong>
+				<a href="https://wordnet.princeton.edu/wordnet/">WordNet
+				</a>
+			  </strong> by 
+			  <em>Princeton University
+			  </em>
+			</li>
+			<li>
+			  <strong>
+				<a href="https://github.com/jdehlin/WordNetSharp">WordNet API
+				</a>
+			  </strong> by 
+			  <em>
+				<a href="https://github.com/jdehlin">jdehlin
+				</a>
+			  </em>
+			</li>
+			<li>
+			  <strong>
+				<a href="http://elexicon.wustl.edu/default.asp">English Elexicon Project
+				</a>
+			  </strong> - 
+			  <em>Washington University, St. Louis
+			  </em>
+			</li>
+			<li>
+			  <strong>
+				<a href="http://neuroph.sourceforge.net">Neuroph
+				</a>
+			  </strong> translated to C# at 
+			  <a href="https://github.com/starhash/Neuroph.NET">Neuroph.NET
+			  </a>.
+			</li>
+			<li>
+			  <strong>
+				<a href="https://www.ikvm.net/">IKVM
+				</a>
+			  </strong> - an implementation of Java for Mono and the Microsoft .NET Framework. Used to run converted Neuroph source code.
+			</li>
+		  </ol>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Smart Reader maintained by <a href="https://github.com/starhash">starhash</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
