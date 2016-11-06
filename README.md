@@ -1,8 +1,6 @@
 # Smart Reader
 ___By [Pramodith B.](https://github.com/pramodith), [Harsh Srivastava](https://www.github.com/starhash) and Anmol Sadanand___
 ## Synopsis
-The aim of our project is to build a ‘Smart Reader’ which helps the user understand and comprehend the texts while reading. Our application is composed of three main features, viz.-
+The aim of our project is to build a ‘Smart Reader’ which helps the user understand and comprehend the texts while reading.
 
-1. **“Word-meaning” suggestions based on predictive analysis on the user’s vocabulary**. _Based on the user’s ability to understand different words, the words are categorized by performing clustering. The clustering takes into account various properties like length, number of syllables, number of phenomes and their occurrence in past literature._
-2. **Identifications of Definitions.** _Getting stuck at a particular term and having to flip through the pages to lookup its definition, can be a major problem while reading technical books. Keeping in mind the reader’s accessibility and the time wasted during searching, the application is designed to perform ‘Natural Language Processing’ on the complete text to identify definitions. These definitions can be accessed by tapping or accessing the quick tools provided in the application._
-3. **Identifying Social Relationships in a novel or short story.** _It often happens that a reader reaches a point while reading where he fails to find any semblance amongst characters who have appeared. For this case a method is proposed wherein a connected hierarchy or relations is formed between the characters occurring in a story. This feature aims at drawing an analogy from the representation a ‘Family-Tree-Hierarchy’._
+Head to our [wiki](https://github.com/starhash/AISmartReader/wiki) to know more.
