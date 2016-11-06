@@ -3,10 +3,9 @@ import re
 import codecs
 from nltk.tokenize import word_tokenize
 from nltk.tag import StanfordNERTagger
-import textract
 from string import punctuation
 from collections import Counter
-import httplib, urllib, base64
+import httplib2, urllib, base64
 
 
 def strip_punctuation(s):
@@ -21,14 +20,11 @@ def find_between( s, first_index, last_index ):
         return ""
 
 
-#st = StanfordNERTagger('english.all.3class.distsim.crf.ser.gz')
-st = StanfordNERTagger('/home/serveradmin/stanford-ner-2015-12-09/classifiers/english.all.3class.distsim.crf.ser.gz','/home/serveradmin/stanford-ner-2015-12-09/stanford-ner.jar')
-#text = (textract.process('/Users/anmol/Downloads/potter.pdf')).decode('unicode_escape').encode('ascii','ignore')
-fr = open('/home/serveradmin/HP.txt')
-text = ""
-for line in fr.readlines():
-    text = text + " " + line
-
+st = StanfordNERTagger('G:\\Stuff\\stanford-ner-2015-12-09\\stanford-ner-2015-12-09\\classifiers\\english.all.3class.distsim.crf.ser.gz','G:\\Stuff\\stanford-ner-2015-12-09\\stanford-ner-2015-12-09\\stanford-ner.jar')
+fw=open('C:\\Users\\harsh\\Documents\\Visual Studio 2015\\Projects\\AISmartReader\\Readifine\\bin\\Debug\\data\\Pygmalion.txt')
+text=""
+for lines in fw.readlines():
+    text+=lines
 entityclass_text = st.tag(text.split())
 freq_person,person_list,location_list=[],[],[]
 
@@ -63,7 +59,7 @@ for i in xrange(len(clumps)):
         clumps[i] = clumps[i][0:4900]
 
 
-print freq_person
+print (freq_person)
 
 headers = {
     'Content-Type': 'application/json',
@@ -90,4 +86,4 @@ try:
     print(data)
     conn.close()
 except Exception as e:
-    print e
+    print (e)

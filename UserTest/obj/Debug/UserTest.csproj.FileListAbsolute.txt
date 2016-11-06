@@ -19,7 +19,6 @@ C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\UserTest\bin\
 C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\UserTest\bin\Debug\Lzma#.dll
 C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\UserTest\bin\Debug\AISmartReaderLibrary.dll
 C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\UserTest\bin\Debug\Neuroph.dll
-C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\UserTest\bin\Debug\IKVM.OpenJDK.Core.dll
 C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\UserTest\bin\Debug\IKVM.OpenJDK.Jdbc.dll
 C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\UserTest\bin\Debug\neuroph-libs.dll
 C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\UserTest\bin\Debug\IKVM.Runtime.dll

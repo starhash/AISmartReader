@@ -14,8 +14,8 @@ namespace AISmartReaderLibrary {
         ILemmatizer lmtz = new LemmatizerPrebuiltCompact(LemmaSharp.LanguagePrebuilt.English);
         
         Random r;
-        static Dictionary<string, int> _words;
-        public static Dictionary<string, int> Words { get { return _words; } }
+        //static Dictionary<string, int> _words;
+        //public static Dictionary<string, int> Words { get { return _words; } }
         int testIndex = -1;
         int testCount = 20;
 
@@ -25,14 +25,14 @@ namespace AISmartReaderLibrary {
         int answer = -1;
         int sel = -1;
 
-        static UserVocabularyDeterminerPlugin() {
-            string[] lines = File.ReadAllLines(Path.Combine(UserPreferences.Base, "data\\clustered.prop"));
-            _words = new Dictionary<string, int>();
-            foreach (string s in lines) {
-                int idx = s.IndexOf(',');
-                _words.Add(s.Substring(0, idx), int.Parse(s.Substring(idx + 1).Trim()));
-            }
-        }
+        //static UserVocabularyDeterminerPlugin() {
+        //    string[] lines = File.ReadAllLines(Path.Combine(UserPreferences.Base, "data\\clustered.prop"));
+        //    _words = new Dictionary<string, int>();
+        //    foreach (string s in lines) {
+        //        int idx = s.IndexOf(',');
+        //        _words.Add(s.Substring(0, idx), int.Parse(s.Substring(idx + 1).Trim()));
+        //    }
+        //}
 
         public UserVocabularyDeterminerPlugin(int testCount = 20) {
             r = new Random();
@@ -45,7 +45,7 @@ namespace AISmartReaderLibrary {
             string w;
             Set<SynSet> s;
             do {
-                w = _words.Keys.ElementAt(r.Next(_words.Count));
+                w = WordHighlighter.Words.Keys.ElementAt(r.Next(WordHighlighter.Words.Count));
                 s = Plugin.GetSynSetsFor(lmtz.Lemmatize(w.ToLower()));
             } while (s.Count == 0);
             return new Tuple<string, Set<SynSet>>(w, s);
@@ -132,19 +132,21 @@ namespace AISmartReaderLibrary {
         }
 
         public int Calculate() {
-            int[] count = new int[5];
-            questions.Keys.ToList().ForEach(x => {
-                count[Words[x]]++;
-            });
-            Dictionary<string, bool> filter = questions.Where((x) => x.Value == false).ToDictionary((x) => x.Key, (y) => y.Value, questions.Comparer);
-            List<int> labels = filter.Keys.Select((x) => _words[x]).ToList();
-            int[] mcount = new int[5];
-            for(int i = 0; i < 5; i++) {
-                mcount[i] = labels.Where(x => x == i).Count();
+            int[] correct = new int[8];
+            int[] total = new int[8];
+            foreach(string s in questions.Keys) {
+                total[WordHighlighter.Words[s].Cluster]++;
+                if (questions[s])
+                    correct[WordHighlighter.Words[s].Cluster]++;
             }
-            int mode = mcount.Max();
+            int corrweightot = 0, totweightot = 0;
+            for (int i = 0; i < 8; i++) {
+                corrweightot += correct[i] * (i + 1);
+                totweightot += total[i] * (i + 1);
+            }
+            double mode = corrweightot * 8.0 / totweightot;
             //int mode = labels.GroupBy(v => v).OrderByDescending(g => g.Count()).First().Key;
-            return mode;
+            return (int)Math.Floor(mode);
         }
     }
 

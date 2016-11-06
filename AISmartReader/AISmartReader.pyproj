@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>5eb0590f-89e5-46e2-b6ce-59d52271d00c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Pramodith\words_cluster.py</StartupFile>
+    <StartupFile>Anmol\test.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -48,6 +48,7 @@
     <Content Include="Pramodith\words-lim-len4_output.csv" />
   </ItemGroup>
   <ItemGroup>
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.4" />
     <InterpreterReference Include="{ce7d0420-2016-4e97-b8b1-c351009dc646}\2.7" />
   </ItemGroup>
   <ItemGroup>

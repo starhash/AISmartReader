@@ -21,7 +21,7 @@ namespace UserTest {
             UserPreferences user = new UserPreferences();
             user.LoadUserPreference(2);
 
-            string text = File.ReadAllText(@"data\\The Pickwick Papers.txt");
+            string text = File.ReadAllText(@"C:\\Users\\harsh\\Documents\\Visual Studio 2015\\Projects\\AISmartReader\\Readifine\\bin\\Debug\\data\\Pygmalion.txt");
             WordFilter filter = new WordFilter(user);
             List<TaggedWord> tokens = filter.TagDocumentText(text);
             foreach(TaggedWord word in tokens) {

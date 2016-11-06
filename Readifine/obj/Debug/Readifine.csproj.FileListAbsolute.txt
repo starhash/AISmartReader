@@ -65,3 +65,5 @@ C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\Readifine\obj
 C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\Readifine\obj\Debug\Readifine.pdb
 C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\Readifine\obj\Debug\UserTest.g.cs
 C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\Readifine\obj\Debug\UserTest.baml
+C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\Readifine\obj\Debug\Context.g.cs
+C:\Users\harsh\Documents\Visual Studio 2015\Projects\AISmartReader\Readifine\obj\Debug\Context.baml

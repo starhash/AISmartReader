@@ -21,5 +21,9 @@ namespace Readifine {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void Contextualize_Click(object sender, RoutedEventArgs e) {
+            frame.Source = new Uri("/Readifine;component/Context.xaml", UriKind.Relative);
+        }
     }
 }

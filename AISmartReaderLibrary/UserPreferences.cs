@@ -21,15 +21,16 @@ namespace AISmartReaderLibrary {
             bool b = false;
             if (b = (predictionNN = LoadNeuralPref()) == null) {
                 if (level < 0) return false;
-                DataSet ds = new DataSet(4, 1);
+                Level = level;
+                DataSet ds = new DataSet(2, 1);
                 foreach (string w in WordHighlighter.Words.Keys) {
                     string word = w;
                     string lemma = l.Lemmatize(word);
                     if (WordHighlighter.Words.ContainsKey(lemma)) word = lemma;
-                    ds.addRow(new DataSetRow(WordHighlighter.Words[word].Data, new double[] { (UserVocabularyDeterminerPlugin.Words[word] <= level) ? 1 : 0 }));
+                    ds.addRow(new DataSetRow(WordHighlighter.Words[word].Data, new double[] { (WordHighlighter.Words[word].Cluster <= level) ? 1 : 0 }));
                 }
                 ds.shuffle();
-                predictionNN = new MultiLayerPerceptron(4, 3, 1);
+                predictionNN = new MultiLayerPerceptron(2, 3, 1);
                 MomentumBackpropagation mombp = new MomentumBackpropagation();
                 mombp.MaxError = 0.004;
                 mombp.LearningRate = 0.2;
@@ -58,12 +59,12 @@ namespace AISmartReaderLibrary {
             //predictionNN.calculate();
             //var result = predictionNN.Output[0];
             //return result > 0.5;
-            return UserVocabularyDeterminerPlugin.Words[word] <= Level;
+            return WordHighlighter.Words[word].Cluster <= Level;
         }
 
         public void ReTrain(string word, bool knownStatus) {
             predictionNN.resumeLearning();
-            DataSet ds = new DataSet(4, 1);
+            DataSet ds = new DataSet(2, 1);
             ds.addRow(new DataSetRow(WordHighlighter.Words[word].Data, new double[] { (knownStatus) ? 1 : 0 }));
             predictionNN.learn(ds);
             predictionNN.pauseLearning();
