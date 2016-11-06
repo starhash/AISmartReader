@@ -25,6 +25,7 @@ namespace AISmartReaderLibrary {
         int answer = -1;
         int sel = -1;
 
+        //
         //static UserVocabularyDeterminerPlugin() {
         //    string[] lines = File.ReadAllLines(Path.Combine(UserPreferences.Base, "data\\clustered.prop"));
         //    _words = new Dictionary<string, int>();
